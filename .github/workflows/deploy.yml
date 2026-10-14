@@ -1,0 +1,21 @@
+name: Deploy and Run C++ IMS
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Compile Code with GCC
+      run: g++ -O3 main.cpp -o InventorySystem
+
+    - name: Run Inventory Application
+      run: ./InventorySystem
